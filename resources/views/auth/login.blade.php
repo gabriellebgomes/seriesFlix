@@ -1,13 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<body class="bg-dark">
+<div class="container ">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+             <div class="card-header text-center fw-bold fs-4">
+    SeriesFlix 🍿
+</div>
+<div class="text-center mb-4">
+    <h3 class="fw-bold">Bem-vindo(a) de volta!</h3>
+    <p class="text-muted">Entre para acessar suas séries favoritas</p>
+</div>
 
-                <div class="card-body">
+              <div class="card shadow-lg border-0 rounded-4">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -62,6 +69,7 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+
                             </div>
                         </div>
                     </form>

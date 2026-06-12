@@ -9,14 +9,8 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('site.index', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::middleware('auth')->group(function () {
-
-    Route::get('/series/create', [SeriesController::class, 'create'])
-        ->name('series.create');
-
-    Route::post('/series', [SeriesController::class, 'store'])
-        ->name('series.store');
+    Route::resource('series', SeriesController::class);
 
 });

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seriesflix</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-seriesFlix.png') }}">
     <style>
     *{
     margin:0;
@@ -104,10 +105,10 @@ main p{
             <h1>Filmes, séries e muito mais, sem limites</h1>
             <h3>A partir de R$ 20,90. Cancele quando quiser.</h3>
             <p>
-                Quer assistir? Informe seu email para criar ou reiniciar sua assinatura.
+                Quer assistir? Entre ou crie sua conta.
             </p>
             <div class="email-box">
-                <a href="{{ route('login') }}" class="btn-login">Entrar</a>
+                <br><a href="{{ route('login') }}" class="btn-login">Entrar</a>
                 <a href="{{ route('register') }}" class="btn-login">Cadastrar</a>
             </div>
             

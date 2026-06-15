@@ -1,79 +1,139 @@
 @extends('layouts.app')
 
 @section('content')
-<body class="bg-dark">
-<div class="container ">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-             <div class="card-header text-center fw-bold fs-4">
-    SeriesFlix 🍿
-</div>
-<div class="text-center mb-4">
-    <h3 class="fw-bold">Bem-vindo(a) de volta!</h3>
-    <p class="text-muted">Entre para acessar suas séries favoritas</p>
-</div>
+<style>
+    body {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+    }
+    .login-card {
+        background: rgba(20, 20, 20, 0.92);
+        border-radius: 10px;
+        backdrop-filter: blur(5px);
+    }
+    .logo-seriesflix {
+        color: #E50914;
+        font-size: 2.8rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+    .form-control {
+        background: #333 !important;
+        border: 1px solid #444;
+        color: white !important;
+        height: 50px;
+    }
+    .form-control:focus {
+        background: #333;
+        color: white;
+        border-color: #E50914;
+        box-shadow: 0 0 0 0.2rem rgba(229, 9, 20, .25);
+    }
+    .form-control::placeholder {
+        color: #bbb;
+    }
+    .btn-login {
+        background: #E50914;
+        border: none;
+        height: 50px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .btn-login:hover {
+        background: #c40812;
+    }
+    .text-light-gray {
+        color: #b3b3b3;
+    }
 
-              <div class="card shadow-lg border-0 rounded-4">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+    .forgot-link:hover {
+        color: white;
+    }
+    .form-check-label {
+        color: #b3b3b3;
+    }
+    .invalid-feedback {
+        color: #ff6b6b;
+    }
+</style>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="col-11 col-sm-10 col-md-8 col-lg-5 col-xl-4">
+        <div class="card login-card shadow-lg border-0">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <h1 class="logo-seriesflix">SeriesFlix</h1>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    <h3 class="text-white fw-bold mt-3">
+                        Bem-vindo(a) de volta!
+                    </h3>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-
-                            </div>
-                        </div>
-                    </form>
+                    <p class="text-light-gray">
+                        Entre para acessar suas séries favoritas
+                    </p>
                 </div>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="mb-3">
+                        <input
+                            id="email"
+                            type="email"
+                            placeholder="Digite seu e-mail"
+                            class="form-control @error('email') is-invalid @enderror"
+                            name="email"
+                            value="{{ old('email') }}"
+                            required
+                            autocomplete="email"
+                            autofocus
+                        >
+                        @error('email')
+                            <span class="invalid-feedback d-block">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <input
+                            id="password"
+                            type="password"
+                            placeholder="Digite sua senha"
+                            class="form-control @error('password') is-invalid @enderror"
+                            name="password"
+                            required
+                            autocomplete="current-password"
+                        >
+                        @error('password')
+                            <span class="invalid-feedback d-block">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-check mb-4">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            name="remember"
+                            id="remember"
+                            {{ old('remember') ? 'checked' : '' }}
+                        >
+                        <label class="form-check-label" for="remember">
+                            Lembrar de mim
+                        </label>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-login text-white">
+                            Entrar
+                        </button>
+                    </div>
+                    @if (Route::has('password.request'))
+                        <div class="text-center mt-4">
+                            <a class="forgot-link" href="{{ route('password.request') }}">
+                                Esqueceu sua senha?
+                            </a>
+                        </div>
+                    @endif
+                </form>
             </div>
         </div>
     </div>

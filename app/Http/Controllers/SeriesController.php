@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Series;
+use Illuminate\Support\Facades\Storage;
 
 
 class SeriesController extends Controller
@@ -74,12 +75,12 @@ public function update(Request $request, $id)
         ->route('series.index')
         ->with('success', 'Série atualizada com sucesso!');
 }
-public function destroy($id)
+public function delete($id)
 {
     $serie = Series::findOrFail($id);
 
     if ($serie->capa) {
-        \Storage::disk('public')->delete($serie->capa);
+        Storage::disk('public')->delete($serie->capa);
     }
 
     $serie->delete();

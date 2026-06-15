@@ -1,9 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Séries Cadastradas')
+@section('title', 'SeriesFlix')
 
 @section('content_header')
     <h1>Séries Cadastradas</h1>
+    
+@stop
+@section('adminlte_css')
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-seriesFlix.png') }}">
 @stop
 
 @section('content')
@@ -13,7 +17,11 @@
         {{ session('success') }}
     </div>
 @endif
-
+<div class="d-flex justify-content-end mb-3">
+    <a href="{{ route('series.create') }}" class="btn btn-success">
+        <i class="fas fa-plus"></i> Adicionar Série
+    </a>
+</div>
 <div class="card">
     <div class="card-body">
 

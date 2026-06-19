@@ -316,11 +316,6 @@ return [
         'icon' => 'fas fa-fw fa-plus',
     ],
 
-    [
-        'text' => 'Usuários',
-        'url'  => 'users',
-        'icon' => 'fas fa-fw fa-users',
-    ],
 
 ],
 

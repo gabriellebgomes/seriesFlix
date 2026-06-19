@@ -7,14 +7,19 @@
 <link rel="icon" type="image/png" href="{{ asset('images/logo-seriesFlix.png') }}">
 
 <style>
+    body{
+        
+    }
 .content-wrapper{
     background: #141414 !important;
 }
+
 .content-header h1{
     color: #ffffff;
     font-weight: 700;
     letter-spacing: 1px;
 }
+
 .main-header{
     background: #0b0b0b !important;
     border-bottom: 1px solid #222 !important;
@@ -32,6 +37,7 @@
     background: #0b0b0b !important;
     border-bottom: 1px solid #222 !important;
 }
+
 .alert-success{
     background: #198754;
     color: white;
@@ -64,14 +70,15 @@
 .card-body{
     padding: 0;
 }
+
 .table{
     margin-bottom: 0;
-    color: #fff;
+    color: #fff !important;
 }
 
 .table th{
     background: #E50914;
-    color: white;
+    color: white !important;
     text-align: center;
     vertical-align: middle;
     border: none;
@@ -83,8 +90,13 @@
 .table td{
     vertical-align: middle;
     border-color: #333;
-    background: #1c1c1c;
+    background: #1c1c1c !important;
     padding: 15px;
+    color: #ffffff !important;
+}
+
+.table tbody td{
+    color: #ffffff !important;
 }
 
 .table-striped tbody tr:nth-of-type(odd){
@@ -95,6 +107,7 @@
     background: #2a2a2a !important;
     transition: .2s;
 }
+
 .table img{
     width: 60px;
     height: 90px;
@@ -102,18 +115,21 @@
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,.6);
 }
+
 .table strong{
-    color: #fff;
+    color: #fff !important;
     font-size: 15px;
 }
+
 .descricao{
     min-width: 300px;
     max-width: 450px;
     white-space: normal !important;
     word-break: break-word;
-    color: #d1d1d1;
+    color: #d1d1d1 !important;
     line-height: 1.5;
 }
+
 .badge-finalizada{
     background: #198754;
     color: white;
@@ -150,10 +166,12 @@
     border-color: #333;
     color: #E50914;
 }
+
 .pagination .page-link:hover{
     background: #2a2a2a;
     color: white;
 }
+
 .pagination .page-item.active .page-link{
     background: #E50914;
     border-color: #E50914;
@@ -181,10 +199,9 @@
         Adicionar Série
     </a>
 </div>
+
 <div class="card">
-
     <div class="card-body">
-
         <div class="table-responsive">
 
             <table class="table table-bordered table-striped">
@@ -202,6 +219,7 @@
                         <th>Ações</th>
                     </tr>
                 </thead>
+
                 <tbody>
                 @forelse($series as $serie)
 
@@ -214,16 +232,31 @@
                                 Sem capa
                             @endif
                         </td>
+
                         <td>
                             <strong>{{ $serie->titulo }}</strong>
                         </td>
+
                         <td class="descricao">
                             {{ $serie->descricao }}
                         </td>
-                        <td>{{ $serie->genero }}</td>
-                        <td>{{ $serie->classificacao_indicativa }}</td>
-                        <td>{{ $serie->temporadas }}</td>
-                        <td>{{ $serie->ano_lancamento }}</td>
+
+                        <td class="text-white">
+                            {{ $serie->genero }}
+                        </td>
+
+                        <td class="text-white">
+                            {{ $serie->classificacao_indicativa }}
+                        </td>
+
+                        <td class="text-white">
+                            {{ $serie->temporadas }}
+                        </td>
+
+                        <td class="text-white">
+                            {{ $serie->ano_lancamento }}
+                        </td>
+
                         <td>
                             @if($serie->status == 'Finalizada')
                                 <span class="badge-finalizada">
@@ -242,34 +275,46 @@
                                 <i class="fas fa-edit"></i>
                                 Editar
                             </a>
+
                             <form action="{{ route('series.destroy', $serie->id) }}"
                                   method="POST"
                                   style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
+
                                 <button
                                     type="submit"
                                     class="btn btn-danger btn-sm"
                                     onclick="return confirm('Tem certeza que deseja excluir esta série?')">
+
                                     <i class="fas fa-trash"></i>
                                     Excluir
+
                                 </button>
                             </form>
                         </td>
                     </tr>
+
                 @empty
+
                     <tr>
                         <td colspan="9" class="text-center text-white py-4">
                             Nenhuma série cadastrada.
                         </td>
                     </tr>
+
                 @endforelse
                 </tbody>
+
             </table>
+
         </div>
+
         <div class="d-flex justify-content-center">
             {{ $series->links() }}
         </div>
+
     </div>
 </div>
+
 @stop

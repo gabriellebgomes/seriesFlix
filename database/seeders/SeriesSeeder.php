@@ -40,6 +40,26 @@ class SeriesSeeder extends Seeder
             'status' => 'Finalizada',
             'capa' => 'capas/thevampirediare.jpg',
         ]);
+        Series::create([
+    'titulo' => 'The Walking Dead',
+    'descricao' => 'Sobreviventes tentam viver em um mundo dominado por zumbis.',
+    'genero' => 'Terror',
+    'classificacao_indicativa' => '18',
+    'temporadas' => 11,
+    'ano_lancamento' => 2010,
+    'status' => 'Finalizada',
+    'capa' => 'capas/thewalkingdead.jpg',
+     ]);
+     Series::create([
+    'titulo' => 'Game of Thrones',
+    'descricao' => 'Famílias nobres disputam o controle dos Sete Reinos.',
+    'genero' => 'Fantasia',
+    'classificacao_indicativa' => '18',
+    'temporadas' => 8,
+    'ano_lancamento' => 2011,
+    'status' => 'Finalizada',
+    'capa' => 'capas/got.jpg',
+]);
 
     }
 }

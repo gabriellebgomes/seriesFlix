@@ -12,7 +12,8 @@ class SeriesController extends Controller
 {
     public function index()
 {
-    $series = Series::all();
+    $series = Series::latest()->paginate(10);
+
     return view('series.index', compact('series'));
 }
     public function create()
@@ -43,6 +44,7 @@ public function store(Request $request)
     return redirect()->route('series.index')
         ->with('success', 'Série cadastrada com sucesso!');
 }
+
 public function edit($id) {
     $serie = Series::findOrfail($id);
 
@@ -75,7 +77,7 @@ public function update(Request $request, $id)
         ->route('series.index')
         ->with('success', 'Série atualizada com sucesso!');
 }
-public function delete($id)
+public function destroy($id)
 {
     $serie = Series::findOrFail($id);
 

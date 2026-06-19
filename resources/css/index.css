@@ -1,0 +1,65 @@
+/* Tabela de séries */
+
+.table img{
+    width: 70px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.table td,
+.table th{
+    vertical-align: middle !important;
+}
+
+.table tbody tr:hover{
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table td:nth-child(3){
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-success{
+    background-color: #E50914 !important;
+    border-color: #E50914 !important;
+}
+
+.btn-success:hover{
+    background-color: #b20710 !important;
+    border-color: #b20710 !important;
+}
+
+.card{
+    border-radius: 10px;
+}
+
+.card-header{
+    font-weight: 600;
+}
+
+.alert-success{
+    border-radius: 8px;
+}
+
+/* Paginação */
+
+.pagination{
+    justify-content: center;
+}
+
+.page-item.active .page-link{
+    background-color: #E50914;
+    border-color: #E50914;
+}
+
+.page-link{
+    color: #E50914;
+}
+
+.page-link:hover{
+    color: #b20710;
+}

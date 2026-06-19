@@ -17,7 +17,7 @@ class SeriesSeeder extends Seeder
             'temporadas' => 5,
             'ano_lancamento' => 2008,
             'status' => 'Finalizada',
-            'capa' => null,
+            'capa' => 'capas/breakingbad.jpg',
         ]);
 
         Series::create([
@@ -28,7 +28,18 @@ class SeriesSeeder extends Seeder
             'temporadas' => 4,
             'ano_lancamento' => 2016,
             'status' => 'Em andamento',
-            'capa' => null,
+            'capa' => 'capas/strangerthings.jpg',
         ]);
+         Series::create([
+            'titulo' => 'The vampire Diares',
+            'descricao' => 'Série sobrenatural sobre vampiros em Mistic Falls.',
+            'genero' => 'Romance',
+            'classificacao_indicativa' => '16',
+            'temporadas' => 8,
+            'ano_lancamento' => 2009,
+            'status' => 'Finalizada',
+            'capa' => 'capas/thevampirediare.jpg',
+        ]);
+
     }
 }
